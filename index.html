@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ngMovies</title>
+	<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/mdi/css/materialdesignicons.min.css" media="all">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-app="ngMovies" ng-controller="moviesCtrl">
+
+	<md-toolbar>
+    	<div class="md-toolbar-tools">
+    		<p><strong>ngMovies</strong></p>
+
+    		<md-button>
+    			<md-icon class="mdi mdi-plus-circle"></md-icon>
+    			New Movie
+    		</md-button>
+    	</div>
+	</md-toolbar>
+
+	<md-content class="md-padding" layout="row" layout-wrap>
+		<md-card ng-repeat="movie in movies" flex="30">
+			<!-- <img ng-src="{{ movie.image }}" class="md-card-image" alt=""> -->
+			<md-card-content>
+				<div class="movies-info" ng-show="!showDir">
+					<h2 class="md-title">{{ movie.title }}</h2>
+					<h2>{{ movie.release | date:"longDate"}}</h2>
+					<h3>{{ movie.budget | currency }}</h3>
+					<p>{{ movie.description }}</p>
+				</div>
+
+				<div class="movie-director" ng-show="showDir">
+					<p><md-icon class="mdi mdi-account"></md-icon>{{ movie.director.name }}</p>
+					<p><md-icon class="mdi mdi-phone"></md-icon>{{ movie.director.phone }}</p>
+					<p><md-icon class="mdi mdi-email"></md-icon>{{ movie.director.email }}</p>
+				</div>
+
+				<div layout="row">
+					<md-button ng-click="showDir = true" ng-show="!showDir">Director</md-button>
+					<md-button ng-click="showDir = false" ng-show="showDir">Details</md-button>
+					<md-button ng-click="showAdmin = true" ng-show="!showAdmin">Admin</md-button>
+					<md-button ng-click="showAdmin = false" ng-show="showAdmin">Close</md-button>
+				</div>
+
+				<div class="moive-admin" ng-if="showAdmin">
+					<h3>Admin</h3>
+					<div layout="row">
+						<md-button class="md-primary">Edit</md-button>
+						<md-button class="md-warn">Delete</md-button>
+					</div>
+				</div>
+			</md-card-content>
+		</md-card>
+	</md-content>
+
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="node_modules/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="node_modules/angular-aria/angular-aria.js"></script>
+	<script type="text/javascript" src="node_modules/angular-material/angular-material.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="components/movies.ctr.js"></script>
+</body>
+</html>
