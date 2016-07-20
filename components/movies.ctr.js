@@ -3,116 +3,84 @@
 	"use strict";
 	angular
 		.module("ngMovies")
-		.controller("moviesCtrl", function($scope){
-			$scope.movies = [
-			{
-				"id": "1",
-				"title": "Kung Fu Panda 1",
-				"budget": "1000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2008-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "http://static.srcdn.com/slir/w1000-h500-q90-c1000:500/wp-content/uploads/Kung-Fu-Panda-3-Furious-Five-Po.jpg",
-				"views": 1233568
-			},
-			{
-				"id": "2",
-				"title": "Kung Fu Panda 2",
-				"budget": "2000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2009-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcp6kQ8FZeiqX6c2iizxyfnk1vFzGBRJECaJijsKdkgS9nSh9unGXNLdL_LBMMEC2wFG5anD9H1vMJq4gau02avC9I9lDZp7E82J8wELE_EXSablKt7Xey_dabDw7vCePlyjvIybL3Eb0mgUxw0kfySGUZe6LgUWHCu5fuVJeLXKE-&format=jpg",
-				"views": 1233568
-			},
-			{
-				"id": "3",
-				"title": "Kung Fu Panda 3",
-				"budget": "3000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2010-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "http://cdn.akamai.steamstatic.com/steam/apps/369230/header.jpg?t=1452101630",
-				"views": 1233568
-			},
-			{
-				"id": "4",
-				"title": "Kung Fu Panda 4",
-				"budget": "4000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2011-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "http://static.srcdn.com/slir/w1000-h500-q90-c1000:500/wp-content/uploads/Kung-Fu-Panda-3-Furious-Five-Po.jpg",
-				"views": 1233568
-			},
-			{
-				"id": "5",
-				"title": "Kung Fu Panda 5",
-				"budget": "5000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2012-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "http://static.srcdn.com/slir/w1000-h500-q90-c1000:500/wp-content/uploads/Kung-Fu-Panda-3-Furious-Five-Po.jpg",
-				"views": 1233568
-			},
-			{
-				"id": "6",
-				"title": "Kung Fu Panda 6",
-				"budget": "6000000",
-				"description": "Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures.1 It was directed by John Stevenson and Mark Osborne and produced by Melissa Cobb, and stars the voices of Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, and Jackie Chan. Set in a version of ancient China populated by Chinese anthropomorphic talking animals, the plot revolves around a bumbling panda named Po who aspires to be a kung fu master. When an evil kung fu warrior is foretold to escape after 20 years in prison, Po is unwittingly named the chosen one destined to bring peace to the land, much to the chagrin of the resident kung fu warriors.",
-				"release": "2013-11-12",
-				"director": {
-					"name": "Mark Osborne",
-					"phone": "(666) 666-6666",
-					"email": "mark@kungfupanda.com"
-				},
-				"categories": [
-					"Animation",
-					"Comdey"
-				],
-				"image": "http://static.srcdn.com/slir/w1000-h500-q90-c1000:500/wp-content/uploads/Kung-Fu-Panda-3-Furious-Five-Po.jpg",
-				"views": 1233568
+		.controller("moviesCtrl", function($scope, $http, moviesFactory, $mdSidenav, $mdToast, $mdDialog){
+			moviesFactory.getMovies().then(function(movies){
+				$scope.movies = movies.data;
+				$scope.categories = getCategories($scope.movies);
+			});
+			
+			var director = {
+				name: "Bruce Wyane",
+				phone: "(666) 666 6666",
+				email: "bruce@kungfupanda.com"
 			}
-			]
+
+			
+
+			$scope.openSidebar = function(){
+				$mdSidenav('left').open();
+			}
+
+			$scope.closeSidebar = function(){
+				$mdSidenav('left').close();
+			}
+
+			$scope.saveMovie = function(movie){
+				if(movie){
+					movie.director = director;
+					$scope.movies.push(movie);
+					$scope.movie = {};
+					$scope.closeSidebar();
+					showToast("Movie Saved!");
+				}				
+			}
+
+			$scope.editMovie = function(movie){
+				$scope.editing = true;
+				$scope.openSidebar();
+				$scope.movie = movie;
+			}
+
+			$scope.saveEdit = function(){
+				$scope.editing = false;
+				$scope.movie = {};
+				$scope.closeSidebar();
+				showToast("Edit Saved!");
+			}
+
+			$scope.deleteMovie = function(event, movie){
+				var confirm = $mdDialog.confirm()
+					.title('Are you sure wants to delete ' + movie.title + ' ?')
+					.ok('Yes')
+					.cancel('No')
+					.targetEvent(event);
+
+				$mdDialog.show(confirm).then(function(){
+					var index = $scope.movies.indexOf(movie);
+					$scope.movies.splice(index, 1);
+				}, function(){
+
+				});
+				
+			}
+
+			function showToast(message){
+				$mdToast.show(
+					$mdToast.simple()
+						.content(message)
+						.position('top, right')
+						.hideDelay(4000)
+				);
+			}
+
+			function getCategories(movies){
+				var categories = [];
+				angular.forEach(movies, function(item){
+					angular.forEach(item.categories, function(category){
+						categories.push(category);
+					});
+				});
+				return _.uniq(categories);
+			}
 		});
 })();
