@@ -4,9 +4,24 @@
 	angular
 		.module("ngMovies")
 		.controller("moviesCtrl", function($scope, $http, moviesFactory, $mdSidenav, $mdToast, $mdDialog){
+
+			var vm = this;
+
+			vm.openSidebar = openSidebar;
+			vm.closeSidebar = closeSidebar;
+			vm.saveMovie = saveMovie;
+			vm.editMovie = editMovie;
+			vm.saveEdit = saveEdit;
+			vm.deleteMovie = deleteMovie;
+
+			vm.movies;
+			vm.categories;
+			vm.editing;
+			vm.movie;
+
 			moviesFactory.getMovies().then(function(movies){
-				$scope.movies = movies.data;
-				$scope.categories = getCategories($scope.movies);
+				vm.movies = movies.data;
+				vm.categories = getCategories(vm.movies);
 			});
 			
 			var director = {
@@ -15,40 +30,38 @@
 				email: "bruce@kungfupanda.com"
 			}
 
-			
-
-			$scope.openSidebar = function(){
+			function openSidebar(){
 				$mdSidenav('left').open();
 			}
 
-			$scope.closeSidebar = function(){
+			function closeSidebar(){
 				$mdSidenav('left').close();
 			}
 
-			$scope.saveMovie = function(movie){
+			function saveMovie(movie){
 				if(movie){
 					movie.director = director;
-					$scope.movies.push(movie);
-					$scope.movie = {};
-					$scope.closeSidebar();
+					vm.movies.push(movie);
+					vm.movie = {};
+					closeSidebar();
 					showToast("Movie Saved!");
 				}				
 			}
 
-			$scope.editMovie = function(movie){
-				$scope.editing = true;
-				$scope.openSidebar();
-				$scope.movie = movie;
+			function editMovie(movie){
+				vm.editing = true;
+				openSidebar();
+				vm.movie = movie;
 			}
 
-			$scope.saveEdit = function(){
-				$scope.editing = false;
-				$scope.movie = {};
-				$scope.closeSidebar();
+			function saveEdit(){
+				vm.editing = false;
+				vm.movie = {};
+				closeSidebar();
 				showToast("Edit Saved!");
 			}
 
-			$scope.deleteMovie = function(event, movie){
+			function deleteMovie(event, movie){
 				var confirm = $mdDialog.confirm()
 					.title('Are you sure wants to delete ' + movie.title + ' ?')
 					.ok('Yes')
@@ -56,8 +69,8 @@
 					.targetEvent(event);
 
 				$mdDialog.show(confirm).then(function(){
-					var index = $scope.movies.indexOf(movie);
-					$scope.movies.splice(index, 1);
+					var index = vm.movies.indexOf(movie);
+					vm.movies.splice(index, 1);
 				}, function(){
 
 				});

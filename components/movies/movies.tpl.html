@@ -1,0 +1,105 @@
+<md-toolbar>
+    	<div class="md-toolbar-tools">
+    		<p><strong>ngMovies</strong></p>
+
+    		<md-button ng-click="vm.openSidebar()">
+    			<md-icon class="mdi mdi-plus-circle"></md-icon>
+    			New Movie
+    		</md-button>
+
+    		<md-button ng-click="showFilters = true">
+    			<md-icon class="mdi mdi-magnify"></md-icon>
+    			Filters
+    		</md-button>
+    	</div>
+	</md-toolbar>
+
+	<div class="filters" layout="row" layout-align="center center" ng-show="showFilters">
+		<md-input-container>
+			<label>Enter Search Term</label>
+			<input type="text" ng-model="movieFilter">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Category</label>
+			<md-select ng-model="category">
+				<md-option ng-repeat="category in vm.categories" value="{{ category }}">
+					{{ category }}
+				</md-option>
+			</md-select>
+		</md-input-container>
+		<div layout="row">
+			<md-button class="warn" ng-click="movieFilter=''; category=''">Clear</md-button>
+		</div>
+	</div>
+
+	<md-sidenav class="md-sidenave-left md-whitefram-z2" md-component-id="left"> 
+		<md-toolbar>
+			<h1 class="md-toolbar-tools">Add a Movie</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<form>
+				<md-input-container>
+					<label for="title">Title</label>
+					<input type="text" id="title" ng-model="movie.title" md-autofocus>
+				</md-input-container>
+				<md-input-container>
+					<label for="budget">Budget</label>
+					<input type="text" id="budget" ng-model="movie.budget">
+				</md-input-container>
+				<md-input-container>
+					<label for="description">Description</label>
+					<textarea type="text" id="description" ng-model="movie.description"></textarea>
+				</md-input-container>
+				<md-input-container>
+					<label for="image">Image Link</label>
+					<input type="text" id="image" ng-model="movie.image">
+				</md-input-container>
+				<md-button ng-click="vm.saveMovie(movie)" ng-if="!editing" class="md-primary">
+					Save
+				</md-button>
+				<md-button ng-click="vm.saveEdit()" class="md-primary" ng-if="editing">
+					Save Edit
+				</md-button>
+				<md-button class="md-warn" ng-click="vm.closeSidebar()">
+					Cancel
+				</md-button>
+				<pre>{{ movie | json }}</pre>
+			</form>
+		</md-content>
+	</md-sidenav>
+
+	<md-content class="md-padding" layout="row" layout-wrap>
+		<md-card ng-repeat="movie in vm.movies | filter: movieFilter | filter: category" flex="30" class="movie">
+			<img ng-src="{{ movie.image }}" class="md-card-image" alt="">
+			<md-card-content>
+				<div class="movies-info" ng-show="!showDir">
+					<h2 class="md-title">{{ movie.title }}</h2>
+					<h2>{{ movie.release | date:"longDate"}}</h2>
+					<h3>{{ movie.budget | currency }}</h3>
+					<p>{{ movie.description }}</p>
+				</div>
+
+				<div class="movie-director" ng-show="showDir">
+					<p><md-icon class="mdi mdi-account"></md-icon>{{ movie.director.name }}</p>
+					<p><md-icon class="mdi mdi-phone"></md-icon>{{ movie.director.phone }}</p>
+					<p><md-icon class="mdi mdi-email"></md-icon>{{ movie.director.email }}</p>
+				</div>
+
+				<div layout="row">
+					<md-button ng-click="showDir = true" ng-show="!showDir">Director</md-button>
+					<md-button ng-click="showDir = false" ng-show="showDir">Details</md-button>
+					<md-button ng-click="showAdmin = true" ng-show="!showAdmin">Admin</md-button>
+					<md-button ng-click="showAdmin = false" ng-show="showAdmin">Close</md-button>
+				</div>
+
+				<div class="moive-admin" ng-if="showAdmin">
+					<h3>Admin</h3>
+					<div layout="row">
+						<md-button ng-click="vm.editMovie(movie)" class="md-primary">Edit</md-button>
+						<md-button ng-click="vm.deleteMovie(event, movie)" class="md-warn">Delete</md-button>
+					</div>
+				</div>
+			</md-card-content>
+		</md-card>
+	</md-content>

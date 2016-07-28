@@ -1,12 +1,14 @@
 angular
-	.module("ngMovies", ["ngMaterial"])
-	.config(function($mdThemingProvider){
+	.module("ngMovies", ["ngMaterial", "ui.router"])
+	.config(function($mdThemingProvider, $stateProvider){
 		$mdThemingProvider.theme('default')
 			.primaryPalette('blue')
 			.accentPalette('orange');
-	})
-	.directive("helloWorld", function(){
-		return{
-			template: "<h1>{{ message }} </h1>"
-		}
+	
+		$stateProvider
+			.state('movies', {
+				url: "/movies",
+				templateUrl: "components/movies/movies.tpl.html",
+				controller: "moviesCtrl as vm"
+			})
 	});
