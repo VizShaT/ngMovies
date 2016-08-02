@@ -3,7 +3,7 @@
 	"use strict";
 	angular
 		.module("ngMovies")
-		.controller("moviesCtrl", function($scope, $http, moviesFactory, $mdSidenav, $mdToast, $mdDialog){
+		.controller("moviesCtrl", function($scope, $state, $http, moviesFactory, $mdSidenav, $mdToast, $mdDialog){
 
 			var vm = this;
 
@@ -31,7 +31,7 @@
 			}
 
 			function openSidebar(){
-				$mdSidenav('left').open();
+				$state.go('movies.new');
 			}
 
 			function closeSidebar(){

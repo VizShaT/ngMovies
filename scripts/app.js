@@ -11,4 +11,9 @@ angular
 				templateUrl: "components/movies/movies.tpl.html",
 				controller: "moviesCtrl as vm"
 			})
+			.state('movies.new', {
+				url: "/new",
+				templateUrl: "components/movies/new/movies.new.tpl.html",
+				controller: "newMoviesCtrl as vm"
+			})
 	});
